@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://3l7yhv8cq3hj"]
+
+[ext_resource type="Texture2D" uid="uid://despiask0gf8e" path="res://Assets/Sprites/heart1.png" id="1_7dc3t"]
+[ext_resource type="Script" path="res://Scenes/assets/life.gd" id="1_y56b0"]
+[ext_resource type="Texture2D" uid="uid://bcun27olfms0a" path="res://Assets/Sprites/heart2.png" id="2_niybd"]
+[ext_resource type="Texture2D" uid="uid://csj7llghljmwe" path="res://Assets/Sprites/heart3.png" id="3_1uymf"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_r0v3d"]
+frames = 3
+frame_0/texture = ExtResource("1_7dc3t")
+frame_1/texture = ExtResource("2_niybd")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_1uymf")
+frame_2/duration = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rpw1l"]
+size = Vector3(0.7, 0.7, 0.5)
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_y56b0")
+
+[node name="Node3D" type="Sprite3D" parent="."]
+texture = SubResource("AnimatedTexture_r0v3d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rpw1l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
